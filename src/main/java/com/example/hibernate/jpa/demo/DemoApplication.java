@@ -1,9 +1,8 @@
 package com.example.hibernate.jpa.demo;
 
-import com.example.hibernate.jpa.demo.entity.Course;
-import com.example.hibernate.jpa.demo.entity.Review;
-import com.example.hibernate.jpa.demo.entity.Student;
+import com.example.hibernate.jpa.demo.entity.*;
 import com.example.hibernate.jpa.demo.repository.CourseRepository;
+import com.example.hibernate.jpa.demo.repository.EmployeeRepository;
 import com.example.hibernate.jpa.demo.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +26,9 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	private StudentRepository studentRepository;
 
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
@@ -38,6 +41,10 @@ public class DemoApplication implements CommandLineRunner {
 ////		studentRepository.saveStudentWithPassport();
 //		courseRepository.addReviewsForCourse(10003L, reviews);
 //		studentRepository.insertHardcodedStudentAndCourse();
-		studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
+//		studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
+		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+
+		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
 	}
 }
