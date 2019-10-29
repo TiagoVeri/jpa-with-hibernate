@@ -1,8 +1,6 @@
 package com.example.hibernate.jpa.demo.repository;
 
-import com.example.hibernate.jpa.demo.entity.Course;
-import com.example.hibernate.jpa.demo.entity.Employee;
-import com.example.hibernate.jpa.demo.entity.Review;
+import com.example.hibernate.jpa.demo.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +24,15 @@ public class EmployeeRepository {
         em.persist(employee);
     }
 
-    //retrieve all employees
-     public List<Employee> retrieveAllEmployees(){
-        return em.createQuery("select e from Employee e", Employee.class).getResultList();
+    //retrieve all PartTimeEmployees
+     public List<PartTimeEmployee> retrieveAllPartTimeEmployees(){
+        return em.createQuery("select e from PartTimeEmployee e", PartTimeEmployee.class).getResultList();
     }
+
+    //retrieve all FullTimeEmployees
+    public List<FullTimeEmployee> retrieveAllFullTimeEmployees(){
+        return em.createQuery("select e from FullTimeEmployee e", FullTimeEmployee.class).getResultList();
+    }
+
+
 }

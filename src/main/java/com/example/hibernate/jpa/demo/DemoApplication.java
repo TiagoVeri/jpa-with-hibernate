@@ -42,9 +42,11 @@ public class DemoApplication implements CommandLineRunner {
 //		courseRepository.addReviewsForCourse(10003L, reviews);
 //		studentRepository.insertHardcodedStudentAndCourse();
 //		studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
-		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
-
-		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
-		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
+//		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+//
+//		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+//		logger.info("All Full Time Employees -> {}", employeeRepository.retrieveAllFullTimeEmployees());
+//		logger.info("All Part Time Employees -> {}", employeeRepository.retrieveAllPartTimeEmployees());
+		
 	}
 }
