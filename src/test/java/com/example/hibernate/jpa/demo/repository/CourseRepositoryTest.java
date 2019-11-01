@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.event.TransactionalEventListener;
+
 
 import javax.persistence.EntityManager;
 
@@ -33,6 +35,19 @@ public class CourseRepositoryTest {
     public void findById_basic(){
         Course course = repo.findById(10001L);
         assertEquals("JPA in 50 Steps", course.getName());
+    }
+
+    @Test
+    @Transactional
+    public void findById_cache(){
+        Course course = repo.findById(10001L);
+        logger.info("Fist Course Retrieve {}", course);
+
+        Course course1 = repo.findById(10001L);
+        logger.info("Fist Course Retrieve - Again {}", course1);
+
+        assertEquals("JPA in 50 Steps", course.getName());
+        assertEquals("JPA in 50 Steps", course1.getName());
     }
 
     @Test
